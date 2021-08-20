@@ -1,0 +1,15 @@
+version: "3.5"
+
+
+services:
+  pgbouncer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: "postgres://user:pass@postgres-host/database"
+      POOL_MODE: "session"
+      MAX_CLIENT_CONN: "100"
+
+    ports:
+      - "5432:5432"
